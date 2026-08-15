@@ -24,7 +24,7 @@ output "appflow_flows_kms_arn" {
 }
 output "appflow_flows_metadata_catalog_config" {
   description = "Map of metadata_catalog_config values across all appflow_flows, keyed the same as var.appflow_flows"
-  value       = { for k, v in aws_appflow_flow.appflow_flows : k => v.metadata_catalog_config if v.metadata_catalog_config != null && length(v.metadata_catalog_config) > 0 }
+  value       = { for k, v in aws_appflow_flow.appflow_flows : k => one(v.metadata_catalog_config) if v.metadata_catalog_config != null && length(v.metadata_catalog_config) > 0 }
 }
 output "appflow_flows_name" {
   description = "Map of name values across all appflow_flows, keyed the same as var.appflow_flows"
@@ -36,7 +36,7 @@ output "appflow_flows_region" {
 }
 output "appflow_flows_source_flow_config" {
   description = "Map of source_flow_config values across all appflow_flows, keyed the same as var.appflow_flows"
-  value       = { for k, v in aws_appflow_flow.appflow_flows : k => v.source_flow_config if v.source_flow_config != null && length(v.source_flow_config) > 0 }
+  value       = { for k, v in aws_appflow_flow.appflow_flows : k => one(v.source_flow_config) if v.source_flow_config != null && length(v.source_flow_config) > 0 }
 }
 output "appflow_flows_tags" {
   description = "Map of tags values across all appflow_flows, keyed the same as var.appflow_flows"
@@ -52,6 +52,6 @@ output "appflow_flows_task" {
 }
 output "appflow_flows_trigger_config" {
   description = "Map of trigger_config values across all appflow_flows, keyed the same as var.appflow_flows"
-  value       = { for k, v in aws_appflow_flow.appflow_flows : k => v.trigger_config if v.trigger_config != null && length(v.trigger_config) > 0 }
+  value       = { for k, v in aws_appflow_flow.appflow_flows : k => one(v.trigger_config) if v.trigger_config != null && length(v.trigger_config) > 0 }
 }
 
